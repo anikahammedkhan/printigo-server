@@ -1,0 +1,50 @@
+[
+    {
+        "title": "Binding & Printing Service",
+        "categoryID": "1",
+        "details": "Our digital printing services will help us get your job done faster, quicker and more efficiently than ever before … and these are just some of the benefits of digital printing. Digital print enables us to provide faster turnaround and greater efficiency than ever before, and also allows for new services such as variable data printing where you can differentiate or personalize printed materials by changing text or graphics from page to page without slowing down the printing process. Our full color printing services will also help bring your business to life in a cost-effective manner.",
+        "image": "https://www.dggink.com/wp-content/uploads/2015/09/dynamark-book-2-1024x683.jpg",
+        "rating": 5,
+        "users": 2443
+    },
+    {
+        "title": "T-shirt Design and Printing",
+        "categoryID": "2",
+        "details": "Creating your own t-shirt design at RushOrderTees is simple. Start with a t-shirt from our broad inventory and quickly personalize it using our intuitive Design Studio. Upload your artwork or use our free clipart, fonts, and design templates to make your own shirt in no time. Make your own design on this garment and we'll print it up using our high quality technology. You can be creative with text, images or custom orders. The colours are vibrant and the fine knit gauge mean it takes print exceptionally well. A recommended t- shirt for a wide range of activities from socials like stag & hen parties, a simple but superb gift for family or friends, through to being effective for promotions and business events.",
+        "image": "https://teespy.com/wp-content/uploads/2018/11/tshirtprinting-1.jpg",
+        "rating": 4,
+        "users": 2443
+    },
+    {
+        "title": "Banner Design & Printing",
+        "categoryID": "3",
+        "details": "We offer a wide range of banner printing services, including vinyl banners, mesh banners, fabric banners, and more. Our banners are printed on high-quality materials and are available in a variety of sizes and finishes. We also offer banner stands and accessories to help you display your banners in the best possible way. Our banners are printed on high-quality materials and are available in a variety of sizes and finishes. We also offer banner stands and accessories to help you display your banners in the best possible way.",
+        "image": "https://ae01.alicdn.com/kf/Hcab6cdca6c7f4b65890fc545d2208104Z/Flex-Banner-Printing-Machine-1-8m-With-Two-Xp600-Printheads-High-Speed-Inkjet-Printer.jpg",
+        "rating": 4,
+        "users": 4231
+    },
+    {
+        "title": "Digital Scanning",
+        "categoryID": "4",
+        "details": "We offer a number of scanning solutions that will simplify the process and benefit your business. Digital documents offer quick access and secure files will serve your business with profitability and success. Digital formats increase efficiency, mobility, and reduce costs. Record Nations provides document scanning services to convert your records and make the transition to a paperless office. We can help you slowly transition over time or complete bulk projects to archive your entire library.",
+        "image": "https://images.squarespace-cdn.com/content/v1/5702725a20c647bc942a75b9/1508872280737-RHQT61NQ8MBFK2R5TWK3/shutterstock_89382265.jpg",
+        "rating": 3,
+        "users": 1234
+    },
+    {
+        "title": "Business Card Design & Printing",
+        "categoryID": "5",
+        "details": "Business cards promote individuals and their businesses wherever they go. People can share their name, contact information, and company address with potential customers and clients with this helpful marketing tool. Bring business cards to meetings, conventions, and work events to network with other professionals and potential clients. Custom business cards are also useful when meeting potential customers outside of work or on the go. Buyers can design a custom business card online with one of the available templates. Alternatively, upload your own file or create your own template to remain consistent with your corporate branding. Standard business cards are available for same-day pickup in store, but delivery is also available in as few as three business days. Business card printing is a simple process — just choose a template or a custom design, and then select from a variety of colors, features, and finishes for a more premium feel.",
+        "image": "http://www.cartoriopostal.com/wp-content/uploads/2018/12/cartoriopostal-3Nov2018-soni.jpg",
+        "rating": 4,
+        "users": 1234
+    },
+    {
+        "title": "Silk Screen Printing",
+        "categoryID": "6",
+        "details": "Screen printing is a printing technique that uses a woven mesh to support an ink-blocking stencil. The attached stencil forms open areas of mesh that transfer ink as a sharp-edged image onto a substrate. A roller or squeegee is moved across the screen stencil, forcing or pumping ink past the threads of the woven mesh in the open areas. The screen printing process is also a stencil method of printmaking in which a design is imposed on a screen of silk or synthetic fibers stretched tightly over a wooden or metal frame. It is said to have been invented in China, but the earliest surviving examples are from Islamic Spain. It was introduced to Europe in the late 18th century, where it was quickly adopted by the printmaking establishment. Screen printing is also a method for making lithographic printing plates by photo-engraving a screen coated with a photosensitive emulsion.",
+        "image": "https://img.freepik.com/premium-photo/silk-screen-printing-serigraphy-color-paints-fabric-plastisol-paint-squeegee_183314-1268.jpg?w=2000",
+        "rating": 4,
+        "users": 1234
+    }
+]
