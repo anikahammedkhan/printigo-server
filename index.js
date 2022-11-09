@@ -20,6 +20,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run() {
     try {
         const serviceCollection = client.db('printigo').collection('services');
+        const reviewCollection = client.db('printigo').collection('reviews');
 
         // get all services
         app.get('/services', async (req, res) => {
@@ -48,9 +49,21 @@ async function run() {
             const service = req.body;
             const result = await serviceCollection.insertOne(service);
             res.send(result);
-            console.log(result);
         })
 
+        // add review 
+        app.post('/reviews', async (req, res) => {
+            const review = req.body;
+            const result = await reviewCollection.insertOne(review);
+            res.send(result);
+        })
+
+        // get all reviews
+        app.get('/reviews', async (req, res) => {
+            const cursor = reviewCollection.find({}).sort({ date: -1 });
+            const reviews = await cursor.toArray();
+            res.send(reviews);
+        })
     }
     catch {
         console.log(error);
