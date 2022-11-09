@@ -27,6 +27,23 @@ async function run() {
             const services = await cursor.toArray();
             res.send(services);
         })
+
+        // get only 3 services for home page
+        app.get('/services/limit', async (req, res) => {
+            const cursor = serviceCollection.find({}).limit(3);
+            const services = await cursor.toArray();
+            res.send(services);
+        })
+
+        // get single service
+        app.get('/services/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const service = await serviceCollection.findOne(query);
+            res.send(service);
+        })
+
+
     }
     finally {
 
@@ -38,6 +55,11 @@ run().catch(error => console.error(error));
 
 app.get('/', (req, res) => {
     res.send('Welcome to Printigo Web Server')
+})
+
+// invalid url send 404
+app.get('*', (req, res) => {
+    res.status(404).send('404 Not Found');
 })
 
 app.listen(port, () => {
