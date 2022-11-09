@@ -23,14 +23,14 @@ async function run() {
 
         // get all services
         app.get('/services', async (req, res) => {
-            const cursor = serviceCollection.find({});
+            const cursor = serviceCollection.find({}).sort({ date: -1 });
             const services = await cursor.toArray();
             res.send(services);
         })
 
         // get only 3 services for home page
         app.get('/services/limit', async (req, res) => {
-            const cursor = serviceCollection.find({}).limit(3);
+            const cursor = serviceCollection.find({}).sort({ date: -1 }).limit(3);
             const services = await cursor.toArray();
             res.send(services);
         })
@@ -43,7 +43,16 @@ async function run() {
             res.send(service);
         })
 
+        // add service
+        app.post('/services', async (req, res) => {
+            const service = req.body;
+            const result = await serviceCollection.insertOne(service);
+            res.send(result);
+        })
 
+    }
+    catch {
+        console.log(error);
     }
     finally {
 
