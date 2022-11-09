@@ -48,6 +48,7 @@ async function run() {
             const service = req.body;
             const result = await serviceCollection.insertOne(service);
             res.send(result);
+            console.log(result);
         })
 
     }
