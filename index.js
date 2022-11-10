@@ -65,6 +65,32 @@ async function run() {
             res.send(reviews);
         })
 
+        // get reviews by _id 
+        app.get('/single-reviews/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const review = await reviewCollection.findOne(query);
+            res.send(review);
+        })
+
+        // update review by _id
+        app.patch('/reviews/:id', async (req, res) => {
+            const id = req.params.id;
+            const data = req.body;
+            console.log(data);
+            const query = { _id: ObjectId(id) };
+            const update = {
+                $set: {
+                    date: req.body.date,
+                    ratings: req.body.ratings,
+                    details: req.body.details,
+                }
+            }
+            const result = await reviewCollection.updateOne(query, update);
+            res.send(result);
+        })
+
+
 
         // get review by serviceId
         app.get('/reviews/:id', async (req, res) => {
@@ -82,6 +108,15 @@ async function run() {
             const cursor = reviewCollection.find(query).sort({ date: -1 });
             const reviews = await cursor.toArray();
             res.send(reviews);
+        })
+
+
+        // delete review
+        app.delete('/delete/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await reviewCollection.deleteOne(query);
+            res.send(result);
         })
     }
     catch {
