@@ -16,22 +16,49 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
+
+// jwt verification 
+function verifyJWT(req, res, next) {
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader) {
+        return res.status(401).send({ message: 'unauthorized access' });
+    }
+    const token = authHeader.split(' ')[1];
+
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, function (err, decoded) {
+        if (err) {
+            return res.status(403).send({ message: 'Forbidden access' });
+        }
+        req.decoded = decoded;
+        next();
+    })
+}
+
+
 // crud oparation : 
 async function run() {
     try {
         const serviceCollection = client.db('printigo').collection('services');
         const reviewCollection = client.db('printigo').collection('reviews');
 
+        // jwt token :
+        app.post('/jwt', (req, res) => {
+            const user = req.body;
+            const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' })
+            res.send({ token })
+        })
+
         // get all services
         app.get('/services', async (req, res) => {
-            const cursor = serviceCollection.find({}).sort({ date: -1 });
+            const cursor = serviceCollection.find({}).sort({ date: 1 });
             const services = await cursor.toArray();
             res.send(services);
         })
 
         // get only 3 services for home page
         app.get('/services/limit', async (req, res) => {
-            const cursor = serviceCollection.find({}).sort({ date: -1 }).limit(3);
+            const cursor = serviceCollection.find({}).sort({ date: 1 }).limit(3);
             const services = await cursor.toArray();
             res.send(services);
         })
@@ -76,8 +103,6 @@ async function run() {
         // update review by _id
         app.patch('/reviews/:id', async (req, res) => {
             const id = req.params.id;
-            const data = req.body;
-            console.log(data);
             const query = { _id: ObjectId(id) };
             const update = {
                 $set: {
@@ -102,7 +127,11 @@ async function run() {
         })
 
         // get review by email
-        app.get('/my-reviews/:email', async (req, res) => {
+        app.get('/my-reviews/:email', verifyJWT, async (req, res) => {
+            const decoded = req.decoded;
+            if (decoded.email !== req.params.email) {
+                res.status(403).send({ message: 'unauthorized access' })
+            }
             const email = req.params.email;
             const query = { email: email };
             const cursor = reviewCollection.find(query).sort({ date: -1 });
